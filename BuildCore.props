@@ -1,0 +1,66 @@
+<Project>
+  <!-- 编译参数 -->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <NoWarn>$(NoWarn);1570,1572,1573,1574,1711,1712,1587,1591</NoWarn>
+    <Optimize>true</Optimize>
+    <RootPath>$(MSBuildThisFileDirectory)</RootPath>
+    <BuildFrameworks>net46</BuildFrameworks>
+  </PropertyGroup>
+
+  <!-- 输出路径设置 -->
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <BaseIntermediateOutputPath>$(RootPath)\Temp\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(TargetFramework)\$(Configuration)\</IntermediateOutputPath>
+
+  </PropertyGroup>
+
+  <!-- Debug编译参数 -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+  </PropertyGroup>
+
+  <!-- Release编译参数 -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;RELEASE;</DefineConstants>
+  </PropertyGroup>
+
+  <!-- 运行时版本宏 -->
+  <PropertyGroup Condition="$(TargetFramework.Length) &gt; 0">
+    <DefineConstants Condition="$(TargetFramework.ToLower().StartsWith('netstandard'))">$(DefineConstants)NET_STANDARD;</DefineConstants>
+    <DefineConstants Condition="$(TargetFramework.ToLower().StartsWith('netcoreapp'))">$(DefineConstants)NET_CORE;</DefineConstants>
+    <DefineConstants Condition="$(TargetFramework.Length) &lt;= 6">$(DefineConstants)NET_FRAMEWORK;</DefineConstants>
+    <DefineConstants>$(DefineConstants)$(TargetFramework.ToLower().Replace("net", "NET_").Replace("standard", "STANDARD_").Replace("coreapp", "CORE_").Replace(".", "_"));</DefineConstants>
+  </PropertyGroup>
+
+  <!-- NetFramework下的版本宏 -->
+  <PropertyGroup Condition="$(TargetFramework.Length) &gt; 0 AND $(TargetFramework.Length) &lt;= 6">
+    <TFVersion>$([System.Version]::Parse('$(TargetFramework.Substring(3, 1)).$(TargetFramework.Substring(4))'))</TFVersion>
+
+    <DefineConstants Condition="$(TFVersion) &lt;= 4.0">$(DefineConstants)NET_LEQ_40;</DefineConstants>
+    <DefineConstants Condition="$(TFVersion) &lt;= 4.5">$(DefineConstants)NET_LEQ_45;</DefineConstants>
+    <DefineConstants Condition="$(TFVersion) &lt;= 4.6">$(DefineConstants)NET_LEQ_46;</DefineConstants>
+    <DefineConstants Condition="$(TFVersion) &lt;= 4.7">$(DefineConstants)NET_LEQ_47;</DefineConstants>
+
+    <DefineConstants Condition="$(TFVersion) &gt;= 4.0">$(DefineConstants)NET_GEQ_40;</DefineConstants>
+    <DefineConstants Condition="$(TFVersion) &gt;= 4.5">$(DefineConstants)NET_GEQ_45;</DefineConstants>
+    <DefineConstants Condition="$(TFVersion) &gt;= 4.6">$(DefineConstants)NET_GEQ_46;</DefineConstants>
+    <DefineConstants Condition="$(TFVersion) &gt;= 4.7">$(DefineConstants)NET_GEQ_47;</DefineConstants>
+  </PropertyGroup>
+
+  <!-- 设置程序集信息 -->
+  <PropertyGroup>
+    <Copyright>© YoYo Corporation. All rights reserved.</Copyright>
+  </PropertyGroup>
+  <Import Project="UnityImport.props"/>
+</Project>
