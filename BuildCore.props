@@ -11,9 +11,8 @@
   <!-- 输出路径设置 -->
   <PropertyGroup>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <BaseIntermediateOutputPath>$(RootPath)\Temp\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(TargetFramework)\$(Configuration)\</IntermediateOutputPath>
-
+    <!--<BaseIntermediateOutputPath>$(RootPath)\Temp\$(MSBuildProjectName)\</BaseIntermediateOutputPath>-->
+    <!--<IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(TargetFramework)\$(Configuration)\</IntermediateOutputPath>-->
   </PropertyGroup>
 
   <!-- Debug编译参数 -->

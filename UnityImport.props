@@ -8,33 +8,33 @@
   <!--运行时引用-->
   <ItemGroup>
     <Reference Include="YoYo">
-      <HintPath>$(MSBuildThisFileDirectory)..\UProject\Assets\Plugins\YoYo.dll</HintPath>
+      <HintPath>$(MSBuildThisFileDirectory)..\..\UProject\Assets\Plugins\YoYo.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="YoYo.App">
-      <HintPath>$(MSBuildThisFileDirectory)..\UProject\Assets\Plugins\YoYo.App.dll</HintPath>
+      <HintPath>$(MSBuildThisFileDirectory)..\..\UProject\Assets\Plugins\YoYo.App.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="YoYo.LayoutAttributes">
-      <HintPath>$(MSBuildThisFileDirectory)..\UProject\Assets\Plugins\YoYo.LayoutAttributes.dll</HintPath>
+      <HintPath>$(MSBuildThisFileDirectory)..\..\UProject\Assets\Plugins\YoYo.LayoutAttributes.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="YoYo.Tasks">
-      <HintPath>$(MSBuildThisFileDirectory)..\UProject\Assets\Plugins\YoYo.Tasks.dll</HintPath>
+      <HintPath>$(MSBuildThisFileDirectory)..\..\UProject\Assets\Plugins\YoYo.Tasks.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="YoYo.Serialization">
-      <HintPath>$(MSBuildThisFileDirectory)..\UProject\Assets\Plugins\YoYo.Serialization.dll</HintPath>
+      <HintPath>$(MSBuildThisFileDirectory)..\..\UProject\Assets\Plugins\YoYo.Serialization.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>
 
   <!--设置导出路径-->
   <PropertyGroup>
-    <OutputPath>$(RootPath)..\UProject\Assets\Plugins</OutputPath>
+    <OutputPath>$(RootPath)..\..\UProject\Assets\Plugins</OutputPath>
     <DocumentationFile>$(OutputPath)\$(MSBuildProjectName).xml</DocumentationFile>
   </PropertyGroup>
   
   <!--导入定义的Unity版本信息-->
-  <Import Project="./UnityLibs/VersionImport.props"/>
+  <Import Project="..\..\UnityLibs\VersionImport.props"/>
 </Project>
